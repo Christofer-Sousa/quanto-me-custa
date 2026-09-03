@@ -94,15 +94,15 @@ function definirVeredito(percentualSalario) {
         const percentualSalarioFormatado = Number(percentualSalario).toFixed(2)
 
         if (percentualSalarioFormatado >= 0 && percentualSalarioFormatado <= 10) {
-            return 'TRANQUILO';
+            return ['TRANQUILO', 'Vai ser feliz!', '&#129297;', 'Pode comprar. Seu salário nem vai perceber.', ['border-green-900/70', 'bg-green-950/20']];
         } else if (percentualSalarioFormatado >= 10 && percentualSalarioFormatado <= 30) {
-            return 'QUESTIONÁVEL';
+            return ['QUESTIONÁVEL', 'Pense bem se vale a pena.', '&#129300;', 'Seu bolso vai sentir. Mas ainda vai respirar.', ['border-yellow-900/70', 'bg-yellow-950/20']];
         } else if (percentualSalarioFormatado >= 30 && percentualSalarioFormatado <= 70) {
-            return 'CORAJOSO';
+            return ['CORAJOSO', 'Nada mais importa?', '&#128559;', 'Seu salário vai lembrar dessa compra por um bom tempo.', ['border-orange-900/70', 'bg-orange-950/20']];
         } else if (percentualSalarioFormatado >= 70 && percentualSalarioFormatado <= 150) {
-            return 'PÉSSIMA IDEIA';
+            return ['PÉSSIMA IDEIA', 'Espere um momento melhor.', '&#129324;', 'Seu cartão de crédito começou a suar.', ['border-red-900/70', 'bg-red-950/20']];
         } else if (percentualSalarioFormatado > 150) {
-            return 'VOCÊ ENLOUQUECEU';
+            return ['VOCÊ ENLOUQUECEU', 'Melhor achar outro emprego antes.', '&#128128;', 'Você está tentando comprar isso ou comprar a própria falência?', ['border-purple-900/70', 'bg-purple-950/20']];
         }
     }
 
@@ -110,12 +110,12 @@ function definirVeredito(percentualSalario) {
 
 function ResultadoCustoReal(horasMensais, valorHora, horasParaCompra, diasTrabalhoParaCompra, semanasParaCompra, salariosNecessarios, percentualDoSalario, vereditoFinal) {
     this.horasMensais = horasMensais;
-    this.valorHora = valorHora;
-    this.horasParaCompra = horasParaCompra;
-    this.diasTrabalhoParaCompra = diasTrabalhoParaCompra;
-    this.semanasParaCompra = semanasParaCompra;
-    this.salariosNecessarios = salariosNecessarios;
-    this.percentualDoSalario = percentualDoSalario;
+    this.valorHora = valorHora.toFixed(2);
+    this.horasParaCompra = horasParaCompra.toFixed(0);
+    this.diasTrabalhoParaCompra = diasTrabalhoParaCompra.toFixed(0);
+    this.semanasParaCompra = semanasParaCompra.toFixed(0);
+    this.salariosNecessarios = salariosNecessarios.toFixed(0);
+    this.percentualDoSalario = percentualDoSalario.toFixed(0);
     this.vereditoFinal = vereditoFinal;
 }
 
@@ -159,7 +159,7 @@ function calcularCustoReal(salario, horasPorDia, diasPorSemana, produto, precoPr
 
 
 
-
+/**
 //============== Testando funcoes =================
 console.log('===== TESTE: calcularCustoReal =====');
 
@@ -314,3 +314,98 @@ console.log('Semanas:', resultadoPS5.semanasParaCompra);
 console.log('Salários:', resultadoPS5.salariosNecessarios);
 console.log('Percentual:', resultadoPS5.percentualDoSalario);
 console.log('Veredito:', resultadoPS5.vereditoFinal);
+*/
+
+
+//==================== Integração com o HTML ======================
+const forms = document.querySelector('#forms')
+const inputSalario = document.querySelector('#salario')
+const inputHorasDia = document.querySelector('#horas-dia')
+const inputDiasSemanas = document.querySelector('#dias-semanas')
+const inputProduto = document.querySelector('#produto')
+const inputPrecoProduto = document.querySelector('#preco-produto')
+
+const quadroHorasDeVida = document.querySelector('#resultado-horas')
+const quadroVeredito = document.querySelector('#veredito')
+const quadroMensagemVeredito = document.querySelector('#mensagem-veredito')
+const quadroDiasDeTrabalho = document.querySelector('#resultado-dias')
+const quadroSemanasDeTrabalho = document.querySelector('#resultado-semanas')
+const quadroSalarios = document.querySelector('#resultado-salarios')
+const quadroPercentual = document.querySelector('#resultado-percentual')
+const quadroMensagemFinal = document.querySelector('#mensagem-final')
+const quadroEmojiVeredito = document.querySelector('#emoji-veredito')
+
+const boxVeredito = document.querySelector('#box-veredito')
+const boxSectionResultado = document.querySelector('#box-section-resultado')
+
+const divResultado = document.querySelector('#resultado')
+
+let salario;
+let horasPorDia;
+let diasPorSemana;
+let produto;
+let precoProduto;
+
+forms.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    salario = Number(inputSalario.value);
+    horasPorDia = Number(inputHorasDia.value);
+    diasPorSemana = Number(inputDiasSemanas.value);
+    produto = inputProduto.value;
+    precoProduto = Number(inputPrecoProduto.value);
+
+    const veredito = calcularCustoReal(salario, horasPorDia, diasPorSemana, produto, precoProduto)
+
+    exibirResultado(veredito)
+    limparInputs()
+
+
+})
+
+function limparInputs(){
+    inputSalario.value = ''
+    inputHorasDia.value = ''
+    inputDiasSemanas.value = ''
+    inputProduto.value = ''
+    inputPrecoProduto.value = ''
+}
+
+
+function exibirResultado(resultadoVeredito) {
+
+    !resultadoVeredito ? alert('Preencha os campos corretamente') : divResultado.classList.remove('hidden');
+
+    boxVeredito.classList.remove(
+        'bg-green-950/20',
+        'bg-yellow-950/20',
+        'bg-orange-950/20',
+        'bg-red-950/20',
+        'bg-purple-950/20'
+    )
+    boxVeredito.classList.remove(
+        'border-green-900/70',
+        'border-yellow-900/70',
+        'border-orange-900/70',
+        'border-red-900/70',
+        'border-purple-900/70'
+    )
+
+    quadroHorasDeVida.innerHTML = resultadoVeredito.horasParaCompra;
+    quadroDiasDeTrabalho.innerHTML = resultadoVeredito.diasTrabalhoParaCompra;
+    quadroSemanasDeTrabalho.innerHTML = resultadoVeredito.semanasParaCompra;
+    quadroSalarios.innerHTML = resultadoVeredito.salariosNecessarios;
+    quadroPercentual.innerHTML = resultadoVeredito.percentualDoSalario + '%';
+    quadroVeredito.innerHTML = resultadoVeredito.vereditoFinal[0];
+    quadroMensagemVeredito.innerHTML = resultadoVeredito.vereditoFinal[1]
+    quadroEmojiVeredito.innerHTML = resultadoVeredito.vereditoFinal[2]
+    quadroMensagemFinal.innerHTML = resultadoVeredito.vereditoFinal[3]
+
+    boxVeredito.classList.add(resultadoVeredito.vereditoFinal[4][0])
+    boxVeredito.classList.add(resultadoVeredito.vereditoFinal[4][1])
+    boxSectionResultado.scrollIntoView({behavior: 'smooth'})
+}
+
+
+
+

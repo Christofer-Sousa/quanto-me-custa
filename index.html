@@ -1,15 +1,274 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!---ICONES FONT WOASON - CDN TAILWILD-->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
     <title>Quanto me custa</title>
 </head>
-<body>
-    
+
+<body class="bg-black flex flex-col justify-center items-center gap-5 max-w-full">
+    <main class="sm:max-w-[500px] md:max-w-[511px] md:min-w-[850px]">
+
+        <header
+            class="w-full flex items-center justify-between rounded-xl border border-green-500/70 bg-zinc-950/80 px-8 py-6 mb-4 gap-5">
+            <div>
+                <h1 class="text-4xl font-black tracking-tight text-zinc-100 md:text-4xl">
+                    Quanto
+                    <span class="text-green-400">Me</span>
+                    Custa?
+                </h1>
+
+                <p class="mt-2 text-base text-zinc-300 md:text-sm">
+                    Descubra quanto da sua vida essa compra vai custar.
+                </p>
+            </div>
+
+
+            <!-- Frase -->
+            <div
+                class="hidden border-l-2 border-green-400 pl-4 text-base font-medium leading-relaxed text-zinc-200 sm:block md:text-lg">
+                <p>Dinheiro volta.</p>
+                <p>Seu tempo não.</p>
+            </div>
+        </header>
+        <section class="w-full rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-2xl shadow-black/20 md:p-8 mb-4">
+
+            <div class="flex items-start gap-4 mb-4">
+                <span class="text-3xl leading-none text-green-400 self-center">
+                    &#128221;
+                </span>
+
+                <div>
+                    <h2 class="text-2xl  tracking-tight text-green-400 md:text-2xl">
+                        1. Sua realidade
+                    </h2>
+
+                    <p class="text-base text-zinc-400 md:text-sm">
+                        preencha seus dados para começarmos.
+                    </p>
+                </div>
+            </div>
+            <form id="forms" class="text-white flex flex-col gap-3">
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4">
+                    <label class="block text-sm font-medium text-zinc-400 mb-2" for="salario">Quanto você ganha por
+                        mes?</label>
+                    <input
+                        class="w-full px-4 py-3 rounded-lg border border-zinc-700 bg-zinc-950 text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+                        type="number" id="salario" placeholder="1.000,00" min="0">
+                </div>
+
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4">
+                    <label class="block text-sm font-medium text-zinc-400 mb-2" for="horas-dia">Horas que você trabalha
+                        por dia?</label>
+                    <input
+                        class="w-full px-4 py-3 rounded-lg border border-zinc-700 bg-zinc-950 text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+                        type="number" id="horas-dia" placeholder="8" min="0">
+                </div>
+
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4">
+                    <label class="block text-sm font-medium text-zinc-400 mb-2" for="dias-semanas">Dias que você
+                        trabalha por semana?</label>
+                    <input
+                        class="w-full px-4 py-3 rounded-lg border border-zinc-700 bg-zinc-950 text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+                        type="number" id="dias-semanas" placeholder="5" min="0" max="7">
+                </div>
+
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4">
+                    <label class="block text-sm font-medium text-zinc-400 mb-2" for="produto">O que voce quer
+                        comprar?</label>
+                    <input
+                        class="w-full px-4 py-3 rounded-lg border border-zinc-700 bg-zinc-950 text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+                        type="text" id="produto" placeholder="Nintendo Switch">
+                </div>
+
+                <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4">
+                    <label class="block text-sm font-medium text-zinc-400 mb-2" for="preco-produto">Qual o
+                        preço?</label>
+                    <input
+                        class="w-full px-4 py-3 rounded-lg border border-zinc-700 bg-zinc-950 text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+                        type="number" id="preco-produto" placeholder="1.000,00" min="0">
+                </div>
+
+                <button id="btn-calcular" 
+                    class="cursor-pointer bg-green-600 hover:bg-green-500 text-white font-semibold px-8 py-4 rounded-xl shadow-lg shadow-indigo-500/30 transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-indigo-400/40">CALCULAR
+                    CUSTO REAL</button>
+            </form>
+        </section>
+
+        <section id="resultado"
+            class=" hidden w-full rounded-2xl border border-zinc-800 bg-zinc-950/70 p-6 shadow-2xl shadow-black/20 md:p-8">
+            <!-- Cabeçalho -->
+            <header class="mb-8">
+                <div id="box-section-resultado" class="flex items-start gap-4">
+                    <span class="text-4xl leading-none text-green-400">
+                        ↗
+                    </span>
+
+                    <div>
+                        <h2 class="text-2xl font-bold tracking-tight text-green-400 md:text-3xl">
+                            2. O custo real da sua escolha
+                        </h2>
+
+                        <p class="mt-2 text-base text-zinc-400 md:text-lg">
+                            Veja quanto da sua vida essa compra realmente custa.
+                        </p>
+                    </div>
+                </div>
+            </header>
+
+
+            <!-- Resultado principal -->
+            <div class="grid gap-4 lg:grid-cols-2 md:justify-center">
+
+                <!-- Horas -->
+                <div
+                    class="flex min-h-[260px] flex-col items-center justify-center rounded-xl border border-zinc-700 bg-zinc-900/60 p-6 text-center">
+                    <p class="text-xl font-semibold text-zinc-100">
+                        Essa compra custa:
+                    </p>
+
+                    <strong id="resultado-horas"
+                        class="mt-2 text-7xl font-black leading-none tracking-tight text-green-400 md:text-8xl">
+                        223
+                    </strong>
+
+                    <span class="mt-2 text-4xl font-black text-zinc-100">
+                        HORAS
+                    </span>
+
+                    <span class="mt-1 text-lg text-zinc-400">
+                        da sua vida
+                    </span>
+                </div>
+
+
+                <!-- Veredito -->
+                <div id="box-veredito"
+                    class="box-border min-h-[260px] flex items-center gap-5 rounded-xl border p-8 max-w-[580px]">
+                    <span id="emoji-veredito" class="text-6xl md:text-7xl">
+
+                    </span>
+
+                    <div>
+                        <h3 id="veredito" class="text-3xl font-black uppercase text-red-400 md:text-3xl mt-3">
+                        </h3> 
+
+                        <p id="mensagem-veredito" class="mt-3 max-w-md text-lg leading-relaxed text-zinc-300">
+                            Financeiramente irresponsável.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Equivalências -->
+            <div class="mt-8">
+
+                <h3 class="mb-4 text-xl font-bold text-zinc-100">
+                    Isso equivale a:
+                </h3>
+
+                <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+
+                    <!-- Dias -->
+                    <article
+                        class="rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 text-center transition duration-200 hover:border-green-400/40">
+                        <div class="mb-3 text-4xl text-green-400">
+                            📅
+                        </div>
+
+                        <strong id="resultado-dias" class="block text-4xl font-black text-green-400">
+                            
+                        </strong>
+
+                        <p class="mt-2 font-semibold text-zinc-200">
+                            dias de trabalho
+                        </p>
+                    </article>
+
+
+                    <!-- Semanas -->
+                    <article
+                        class="rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 text-center transition duration-200 hover:border-yellow-400/40">
+                        <div class="mb-3 text-4xl">
+                            🕐
+                        </div>
+
+                        <strong id="resultado-semanas" class="block text-4xl font-black text-yellow-400">
+                            
+                        </strong>
+
+                        <p class="mt-2 font-semibold text-zinc-200">
+                            semanas de trabalho
+                        </p>
+
+                    </article>
+
+
+                    <!-- Salários -->
+                    <article
+                        class="rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 text-center transition duration-200 hover:border-purple-400/40">
+                        <div class="mb-3 text-4xl">
+                            💼
+                        </div>
+
+                        <strong id="resultado-salarios" class="block text-4xl font-black text-purple-400">
+                            
+                        </strong>
+
+                        <p class="mt-2 font-semibold text-zinc-200">
+                            mês de salário
+                        </p>
+                    </article>
+
+
+                    <!-- Percentual -->
+                    <article
+                        class="rounded-xl border border-zinc-800 bg-zinc-900/50 p-5 text-center transition duration-200 hover:border-blue-400/40">
+                        <div class="mb-3 text-4xl">
+                            💸
+                        </div>
+
+                        <strong id="resultado-percentual" class="block text-4xl font-black text-blue-400">
+                            
+                        </strong>
+
+                        <p class="mt-2 font-semibold text-zinc-200">
+                            do seu salário
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+
+
+            <!-- Mensagem final -->
+            <div class="mt-8 flex items-start gap-5 rounded-xl border border-zinc-800 bg-zinc-900/40 p-6">
+                <span class="text-5xl font-black leading-none text-green-400">
+                    “
+                </span>
+
+                <div>
+                    <p id="mensagem-final" class="text-xl font-semibold text-zinc-100 md:text-2xl">
+                        Seu cartão de crédito começou a suar.
+                    </p>
+
+                    <p class="mt-1 text-base text-zinc-400 md:text-lg">
+                        
+                    </p>
+                </div>
+            </div>
+
+        </section>
+    </main>
 </body>
 <script src="/js/script.js"></script>
+
 </html>
