@@ -45,12 +45,22 @@ A aplicação utiliza esses dados para calcular o **custo real da compra em temp
 
 ### Exemplo
 
-```text
 Salário: R$ 3.000
 Horas por dia: 8
 Dias por semana: 5
 Produto: PlayStation 5
 Preço: R$ 5.000
+
+O resultado apresenta informações como:
+
+⏱️ 223 horas de trabalho
+
+📅 Dias de trabalho
+🗓️ Semanas de trabalho
+💼 Salários necessários
+💸 Percentual do salário
+
+⚠️ Veredito
 
 
 🛠️ Tecnologias
