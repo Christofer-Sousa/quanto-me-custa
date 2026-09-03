@@ -374,7 +374,13 @@ function limparInputs(){
 
 function exibirResultado(resultadoVeredito) {
 
-    !resultadoVeredito ? alert('Preencha os campos corretamente') : divResultado.classList.remove('hidden');
+    if (!resultadoVeredito) {
+        alert('Preencha os campos corretamente') 
+        return
+    } else {
+        divResultado.classList.remove('hidden');
+    }
+     
 
     boxVeredito.classList.remove(
         'bg-green-950/20',
