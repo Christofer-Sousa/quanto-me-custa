@@ -105,13 +105,10 @@ Projeto desenvolvido para estudos e prática de desenvolvimento web.
 
 ⭐ Se este projeto foi útil ou interessante, considere deixar uma estrela no repositório.
 
-### Pequeno detalhe que eu recomendo
-
-No GitHub, eu colocaria **um screenshot do projeto logo depois da descrição**, antes de `Funcionalidades`. Como seu projeto é bastante visual, isso deixa o repositório muito mais apresentável.
-
-Ficaria:
 
 ```markdown
 # 💸 Quanto Me Custa?
 
 > Descubra quanto da sua vida uma compra realmente custa.
+
+![Preview do projeto](./src/preview2.png)
