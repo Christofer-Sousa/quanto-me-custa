@@ -94,15 +94,15 @@ function definirVeredito(percentualSalario) {
         const percentualSalarioFormatado = Number(percentualSalario).toFixed(2)
 
         if (percentualSalarioFormatado >= 0 && percentualSalarioFormatado <= 10) {
-            return ['TRANQUILO', 'Vai ser feliz!', '&#129297;', 'Pode comprar. Seu salário nem vai perceber.', ['border-green-900/70', 'bg-green-950/20']];
+            return ['TRANQUILO', 'Seu bolso mal vai notar.', '&#129297;', 'Pode comprar. Seu salário nem vai perceber.', ['border-green-900/70', 'bg-green-950/20']];
         } else if (percentualSalarioFormatado >= 10 && percentualSalarioFormatado <= 30) {
-            return ['QUESTIONÁVEL', 'Pense bem se vale a pena.', '&#129300;', 'Seu bolso vai sentir. Mas ainda vai respirar.', ['border-yellow-900/70', 'bg-yellow-950/20']];
+            return ['QUESTIONÁVEL', 'Ainda dá tempo de desistir.', '&#129300;', 'Seu bolso vai sentir. Mas ainda vai respirar.', ['border-yellow-900/70', 'bg-yellow-950/20']];
         } else if (percentualSalarioFormatado >= 30 && percentualSalarioFormatado <= 70) {
-            return ['CORAJOSO', 'Nada mais importa?', '&#128559;', 'Seu salário vai lembrar dessa compra por um bom tempo.', ['border-orange-900/70', 'bg-orange-950/20']];
+            return ['CORAJOSO', 'Você realmente quer fazer isso?', '&#128559;', 'Seu salário vai lembrar dessa compra por um bom tempo.', ['border-orange-900/70', 'bg-orange-950/20']];
         } else if (percentualSalarioFormatado >= 70 && percentualSalarioFormatado <= 150) {
-            return ['PÉSSIMA IDEIA', 'Espere um momento melhor.', '&#129324;', 'Seu cartão de crédito começou a suar.', ['border-red-900/70', 'bg-red-950/20']];
+            return ['PÉSSIMA IDEIA', 'Talvez seja hora de repensar essa compra.', '&#129324;', 'Seu cartão de crédito começou a suar.', ['border-red-900/70', 'bg-red-950/20']];
         } else if (percentualSalarioFormatado > 150) {
-            return ['VOCÊ ENLOUQUECEU', 'Melhor achar outro emprego antes.', '&#128128;', 'Você está tentando comprar isso ou comprar a própria falência?', ['border-purple-900/70', 'bg-purple-950/20']];
+            return ['VOCÊ ENLOUQUECEU', 'Isso não é uma compra. É um evento financeiro.', '&#128128;', 'Você está tentando comprar isso ou comprar a própria falência?', ['border-purple-900/70', 'bg-purple-950/20']];
         }
     }
 
@@ -157,166 +157,6 @@ function calcularCustoReal(salario, horasPorDia, diasPorSemana, produto, precoPr
 }
 
 
-
-
-/**
-//============== Testando funcoes =================
-console.log('===== TESTE: calcularCustoReal =====');
-
-const testesCustoReal = [
-    {
-        nome: 'PS5 - salário médio',
-        dados: [3000, 8, 5, 'PlayStation 5', 5000],
-        valido: true
-    },
-
-    {
-        nome: 'Fone barato',
-        dados: [3000, 8, 5, 'Fone Bluetooth', 150],
-        valido: true
-    },
-
-    {
-        nome: 'Notebook',
-        dados: [5000, 8, 5, 'Notebook', 4500],
-        valido: true
-    },
-
-    {
-        nome: 'Celular caro',
-        dados: [2500, 8, 6, 'iPhone', 7000],
-        valido: true
-    },
-
-    {
-        nome: 'Salário alto',
-        dados: [10000, 8, 5, 'Notebook Gamer', 8000],
-        valido: true
-    },
-
-    {
-        nome: 'Trabalha 6 horas por dia',
-        dados: [3000, 6, 5, 'Console', 5000],
-        valido: true
-    },
-
-    {
-        nome: 'Trabalha 12 horas por dia',
-        dados: [5000, 12, 6, 'Carro', 30000],
-        valido: true
-    },
-
-    {
-        nome: 'Trabalha 7 dias por semana',
-        dados: [3000, 8, 7, 'TV', 3000],
-        valido: true
-    },
-
-    // ===== INVÁLIDOS =====
-
-    {
-        nome: 'Salário zero',
-        dados: [0, 8, 5, 'PS5', 5000],
-        valido: false
-    },
-
-    {
-        nome: 'Salário negativo',
-        dados: [-3000, 8, 5, 'PS5', 5000],
-        valido: false
-    },
-
-    {
-        nome: 'Horas por dia zero',
-        dados: [3000, 0, 5, 'PS5', 5000],
-        valido: false
-    },
-
-    {
-        nome: 'Horas por dia acima de 12',
-        dados: [3000, 13, 5, 'PS5', 5000],
-        valido: false
-    },
-
-    {
-        nome: 'Dias por semana zero',
-        dados: [3000, 8, 0, 'PS5', 5000],
-        valido: false
-    },
-
-    {
-        nome: 'Dias por semana acima de 7',
-        dados: [3000, 8, 8, 'PS5', 5000],
-        valido: false
-    },
-
-    {
-        nome: 'Produto vazio',
-        dados: [3000, 8, 5, '', 5000],
-        valido: false
-    },
-
-    {
-        nome: 'Preço zero',
-        dados: [3000, 8, 5, 'PS5', 0],
-        valido: false
-    },
-
-    {
-        nome: 'Preço negativo',
-        dados: [3000, 8, 5, 'PS5', -5000],
-        valido: false
-    },
-
-    {
-        nome: 'Salário NaN',
-        dados: [NaN, 8, 5, 'PS5', 5000],
-        valido: false
-    },
-
-    {
-        nome: 'Preço Infinity',
-        dados: [3000, 8, 5, 'PS5', Infinity],
-        valido: false
-    }
-];
-
-testesCustoReal.forEach((teste) => {
-
-    const resultado = calcularCustoReal(...teste.dados);
-
-    const passou = teste.valido
-        ? resultado !== false
-        : resultado === false;
-
-    console.log(
-        `${passou ? '✅' : '❌'} ${teste.nome}`,
-        '| Resultado:',
-        resultado
-    );
-
-});
-
-const resultadoPS5 = calcularCustoReal(
-    3000,
-    8,
-    5,
-    'PlayStation 5',
-    5000
-);
-
-console.log('===== RESULTADO PS5 =====');
-console.log('Horas mensais:', resultadoPS5.horasMensais);
-console.log('Valor da hora:', resultadoPS5.valorHora);
-console.log('Horas para compra:', resultadoPS5.horasParaCompra);
-console.log('Dias de trabalho:', resultadoPS5.diasTrabalhoParaCompra);
-console.log('Semanas:', resultadoPS5.semanasParaCompra);
-console.log('Salários:', resultadoPS5.salariosNecessarios);
-console.log('Percentual:', resultadoPS5.percentualDoSalario);
-console.log('Veredito:', resultadoPS5.vereditoFinal);
-*/
-
-
 //==================== Integração com o HTML ======================
 const forms = document.querySelector('#forms')
 const inputSalario = document.querySelector('#salario')
@@ -334,6 +174,7 @@ const quadroSalarios = document.querySelector('#resultado-salarios')
 const quadroPercentual = document.querySelector('#resultado-percentual')
 const quadroMensagemFinal = document.querySelector('#mensagem-final')
 const quadroEmojiVeredito = document.querySelector('#emoji-veredito')
+const quadroValorHora = document.querySelector('#resultado-valor-hora')
 
 const boxVeredito = document.querySelector('#box-veredito')
 const boxSectionResultado = document.querySelector('#box-section-resultado')
@@ -346,24 +187,29 @@ let diasPorSemana;
 let produto;
 let precoProduto;
 
+function limparCaracteres(valorInput) {
+    return valorInput.replace(/\D+/g,  '')
+}
+
 forms.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    salario = Number(inputSalario.value);
-    horasPorDia = Number(inputHorasDia.value);
-    diasPorSemana = Number(inputDiasSemanas.value);
+    salario = Number(limparCaracteres(inputSalario.value));
+    horasPorDia = Number(limparCaracteres(inputHorasDia.value));
+    diasPorSemana = Number(limparCaracteres(inputDiasSemanas.value));
     produto = inputProduto.value;
-    precoProduto = Number(inputPrecoProduto.value);
+    precoProduto = Number(limparCaracteres(inputPrecoProduto.value));
 
     const veredito = calcularCustoReal(salario, horasPorDia, diasPorSemana, produto, precoProduto)
 
     exibirResultado(veredito)
     limparInputs()
+    boxSectionResultado.scrollIntoView({ behavior: 'smooth' })
 
 
 })
 
-function limparInputs(){
+function limparInputs() {
     inputSalario.value = ''
     inputHorasDia.value = ''
     inputDiasSemanas.value = ''
@@ -371,16 +217,32 @@ function limparInputs(){
     inputPrecoProduto.value = ''
 }
 
+function validaFormulario() {
+    document.querySelector('.mensagem-erro') ? document.querySelector('.mensagem-erro').remove() : false;
+    let inputs = forms.querySelectorAll('input')
+    for (let input of inputs) {
+        if (!input.value) {
+            false;
+        }
+    }
+
+    const mensagemInputVazio = document.createElement('p')
+    mensagemInputVazio.innerHTML = 'Preencha todos os campos corretamente.';
+    mensagemInputVazio.classList.add('text-red-500/90');
+    mensagemInputVazio.classList.add('mensagem-erro');
+    forms.appendChild(mensagemInputVazio);
+    divResultado.classList.add('hidden')
+}
 
 function exibirResultado(resultadoVeredito) {
-
     if (!resultadoVeredito) {
-        alert('Preencha os campos corretamente') 
+        validaFormulario()
         return
     } else {
+        document.querySelector('.mensagem-erro') ? document.querySelector('.mensagem-erro').remove() : false;
         divResultado.classList.remove('hidden');
     }
-     
+
 
     boxVeredito.classList.remove(
         'bg-green-950/20',
@@ -406,10 +268,11 @@ function exibirResultado(resultadoVeredito) {
     quadroMensagemVeredito.innerHTML = resultadoVeredito.vereditoFinal[1]
     quadroEmojiVeredito.innerHTML = resultadoVeredito.vereditoFinal[2]
     quadroMensagemFinal.innerHTML = resultadoVeredito.vereditoFinal[3]
+    quadroValorHora.innerHTML = `R$${resultadoVeredito.valorHora}`
 
     boxVeredito.classList.add(resultadoVeredito.vereditoFinal[4][0])
     boxVeredito.classList.add(resultadoVeredito.vereditoFinal[4][1])
-    boxSectionResultado.scrollIntoView({behavior: 'smooth'})
+
 }
 
 
